@@ -12,4 +12,9 @@ public class StringCalculatorTest {
     public void testAddOnSingleIntegerSum() {
         assertEquals(10, new StringCalculator().Add("10"));
     }
+
+    @Test
+    public void testAddOnUnknownString() {
+        assertEquals(70, new StringCalculator().Add("10,10,50"));
+    }
 }
