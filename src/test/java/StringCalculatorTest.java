@@ -17,4 +17,9 @@ public class StringCalculatorTest {
     public void testAddOnUnknownString() {
         assertEquals(70, new StringCalculator().Add("10,10,50"));
     }
+
+    @Test
+    public void testAddOnNewRow() {
+        assertEquals(6, new StringCalculator().Add("1\n2,3"));
+    }
 }
