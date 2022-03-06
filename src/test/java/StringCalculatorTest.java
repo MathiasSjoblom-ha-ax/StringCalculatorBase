@@ -22,4 +22,10 @@ public class StringCalculatorTest {
     public void testAddOnNewRow() {
         assertEquals(6, new StringCalculator().Add("1\n2,3"));
     }
+
+    @Test
+    public void testAddOnDifferentSeparator() {
+        assertEquals(3, new StringCalculator().Add("//;\\n1;2"));
+    }
 }
+
