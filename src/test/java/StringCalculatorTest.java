@@ -1,8 +1,10 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringCalculatorTest {
+
     @Test
     public void testAddOnEmptyStringReturnsZero() {
         assertEquals(0, new StringCalculator().Add(""));
@@ -26,6 +28,15 @@ public class StringCalculatorTest {
     @Test
     public void testAddOnDifferentSeparator() {
         assertEquals(3, new StringCalculator().Add("//;\\n1;2"));
+    }
+
+    @Test
+    public void testAddOnNegativeNumber() {
+        //assertEquals("Negative detected", new StringCalculator().Add("-1, 10"));
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                new StringCalculator().Add("-1,10"));
+        assertEquals("Only postive numbers allowed", exception.getMessage());
+
     }
 }
 

@@ -1,5 +1,5 @@
 public class StringCalculator {
-    public int Add(String s) {
+    public static int Add(String s) {
         if(s.isEmpty()) {
             return 0;
         }
@@ -7,6 +7,9 @@ public class StringCalculator {
         int sum = 0;
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
+            if (ch == '-') {
+                throw new IllegalArgumentException("Only postive numbers allowed");
+            }
             if (Character.isDigit(ch))
                 temp += ch;
             else {
