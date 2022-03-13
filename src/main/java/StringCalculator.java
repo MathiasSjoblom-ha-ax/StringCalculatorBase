@@ -1,5 +1,17 @@
-public class StringCalculator {
-    public static int Add(String s) {
+public class StringCalculator implements Logger{
+
+    private final Logger logger;
+
+    public StringCalculator(Logger logger) {
+        this.logger = logger;
+    }
+
+    @Override
+    public void log(Integer number) {
+        logger.log(number);
+    }
+
+    public int Add(String s) {
         if(s.isEmpty()) {
             return 0;
         }
@@ -10,9 +22,13 @@ public class StringCalculator {
             if (ch == '-') {
                 throw new IllegalArgumentException("Only postive numbers allowed");
             }
-            if (Character.isDigit(ch))
+            if (Character.isDigit(ch)) {
                 temp += ch;
-            else {
+                if (Integer.parseInt(temp) > 1000) {
+                    log(Integer.parseInt(temp));
+                    System.out.println("Number bigger than 1000 detected");
+                }
+            } else {
                 sum += Integer.parseInt(temp);
                 temp = "0";
             }
