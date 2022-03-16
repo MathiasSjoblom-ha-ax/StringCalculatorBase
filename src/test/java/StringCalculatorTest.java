@@ -43,7 +43,6 @@ public class StringCalculatorTest {
 
     @Test
     public void testAddOnNegativeNumber() {
-        //assertEquals("Negative detected", new StringCalculator().Add("-1, 10"));
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 new StringCalculator(logg).Add("-1,10"));
         assertEquals("Only postive numbers allowed", exception.getMessage());
@@ -53,6 +52,11 @@ public class StringCalculatorTest {
     @Test
     public void testAddOnBiggerThan1000() {
         assertEquals(5020, new StringCalculator(logg).Add("10,10,5000"));
+    }
+
+    @Test
+    public void testMainReturnMessage() {
+        //??
     }
 }
 

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class StringCalculator implements Logger{
 
     private final Logger logger;
@@ -34,5 +36,21 @@ public class StringCalculator implements Logger{
             }
         }
         return sum + Integer.parseInt(temp);
+    }
+
+    public void main(String[] args) {
+        boolean OnOrOff = true;
+        while (OnOrOff) {
+            System.out.printf("Enter two numbers to add them together or nothing to quit \n");
+            Scanner input = new Scanner(System.in);
+            String numbers = "";
+            numbers = input.nextLine();
+            if (numbers != "") {
+                System.out.println("The result is " + Add(numbers));
+            } else {
+                OnOrOff = false;
+            }
+        }
+        System.out.println("Quitting the program");
     }
 }
