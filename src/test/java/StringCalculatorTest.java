@@ -1,6 +1,12 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -56,7 +62,13 @@ public class StringCalculatorTest {
 
     @Test
     public void testMainReturnMessage() {
-        //??
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        InputStream is = new ByteArrayInputStream("".getBytes(StandardCharsets.UTF_8));
+        System.setIn(is);
+        System.setOut(new PrintStream(outputStreamCaptor));
+        new StringCalculator(logg).main(null);
+        assertEquals("Enter numbers to add them together or nothing to quit", outputStreamCaptor.toString().trim());
+
     }
 }
 

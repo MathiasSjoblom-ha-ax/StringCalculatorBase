@@ -1,3 +1,6 @@
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.StringBufferInputStream;
 import java.util.Scanner;
 
 public class StringCalculator implements Logger{
@@ -39,18 +42,14 @@ public class StringCalculator implements Logger{
     }
 
     public void main(String[] args) {
-        boolean OnOrOff = true;
-        while (OnOrOff) {
-            System.out.printf("Enter two numbers to add them together or nothing to quit \n");
-            Scanner input = new Scanner(System.in);
-            String numbers = "";
-            numbers = input.nextLine();
-            if (numbers != "") {
-                System.out.println("The result is " + Add(numbers));
-            } else {
-                OnOrOff = false;
+        System.out.println("Enter numbers to add them together or nothing to quit \n");
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            System.out.println("Enter your numbers: ");
+            String input = scanner.nextLine();
+            if (input != "") {
+                System.out.println("The result is " + Add(input) + "\n");
             }
         }
-        System.out.println("Quitting the program");
     }
 }
